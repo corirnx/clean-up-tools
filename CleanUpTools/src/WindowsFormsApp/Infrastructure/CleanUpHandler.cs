@@ -8,7 +8,6 @@ namespace WindowsFormsApp.Infrastructure
 {
     internal class CleanUpHandler
     {
-        DirectoryInfo currDirInfo;
         List<string> _infoResultList;
         readonly Stopwatch stopWatch;
 
@@ -28,10 +27,7 @@ namespace WindowsFormsApp.Infrastructure
             if (!TryDirExists(parts[0]))
                 return _infoResultList.ToArray();
 
-            currDirInfo = new DirectoryInfo(parts[0]);
-
-            foreach (var currDir in currDirInfo.EnumerateDirectories())
-                HandleDirectoryInfo(currDir, parts[1], parts[2].StartsWith("f", StringComparison.InvariantCultureIgnoreCase));
+            HandleDirectoryInfo(new DirectoryInfo(parts[0]), parts[1], parts[2].StartsWith("t", StringComparison.InvariantCultureIgnoreCase));
 
             return _infoResultList.ToArray();
         }
