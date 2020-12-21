@@ -50,7 +50,8 @@ namespace WindowsFormsApp.Forms
             // 
             this.rtbConsole.Location = new System.Drawing.Point(12, 12);
             this.rtbConsole.Name = "rtbConsole";
-            this.rtbConsole.Size = new System.Drawing.Size(407, 96);
+            this.rtbConsole.ReadOnly = true;
+            this.rtbConsole.Size = new System.Drawing.Size(625, 327);
             this.rtbConsole.TabIndex = 1;
             this.rtbConsole.Text = "";
             // 
@@ -63,11 +64,12 @@ namespace WindowsFormsApp.Forms
             this.btnCleanUp.TabIndex = 2;
             this.btnCleanUp.Text = "clean up";
             this.btnCleanUp.UseVisualStyleBackColor = true;
+            this.btnCleanUp.Click += new System.EventHandler(this.btnCleanUp_Click);
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnExit.Location = new System.Drawing.Point(643, 171);
+            this.btnExit.Location = new System.Drawing.Point(643, 278);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(129, 61);
             this.btnExit.TabIndex = 3;
