@@ -44,6 +44,7 @@ namespace WindowsFormsApp.Forms
             this.ctnSettings.TabIndex = 0;
             this.ctnSettings.Text = "edit settings";
             this.ctnSettings.UseVisualStyleBackColor = true;
+            this.ctnSettings.Click += new System.EventHandler(this.ctnSettings_Click);
             // 
             // rtbConsole
             // 
@@ -72,6 +73,7 @@ namespace WindowsFormsApp.Forms
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "exit app";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // MainForm
             // 

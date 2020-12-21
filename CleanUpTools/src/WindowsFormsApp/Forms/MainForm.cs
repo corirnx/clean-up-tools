@@ -1,18 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApp.Infrastructure;
 
 namespace WindowsFormsApp.Forms
 {
-    public partial class MainForm : Form
+    internal partial class MainForm : Form
     {
-        public MainForm()
+        readonly SettingsHandler _handler;
+
+        public MainForm(SettingsHandler handler)
         {
             InitializeComponent();
+
+            _handler = handler;
+        }
+
+        private void ctnSettings_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
