@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -48,17 +47,9 @@ namespace WindowsFormsApp.Infrastructure
             return content.Split(_seperator).Where(t => !string.IsNullOrWhiteSpace(t)).ToArray();
         }
 
-        internal void Remove(int index)
+        internal void Remove(string text)
         {
-            var lines = Get();
-
-            var newList = new List<string>();
-
-            for (int i = 0; i < lines.Length; i++)
-                if (i != index)
-                    newList.Add(lines[i]);
-
-            Save(newList.ToArray());
+            Save(Get().Where(d => !d.Equals(text, StringComparison.InvariantCultureIgnoreCase)).ToArray());
         }
 
         bool FileExits(string filePath)
@@ -66,18 +57,6 @@ namespace WindowsFormsApp.Infrastructure
             try
             {
                 return File.Exists(filePath);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        bool DirectoryExits(string dirPath)
-        {
-            try
-            {
-                return Directory.Exists(dirPath);
             }
             catch (Exception ex)
             {

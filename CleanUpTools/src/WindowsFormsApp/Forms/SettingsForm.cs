@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using WindowsFormsApp.Infrastructure;
 
@@ -25,29 +24,6 @@ namespace WindowsFormsApp.Forms
                 lbDirs.Items.Add($"{dir}");
         }
 
-        void btnBack_Click(object sender, EventArgs e)
-        {
-            CloseForm();
-        }
-
-        void btnSave_Click(object sender, EventArgs e)
-        {
-            var list = new List<string>();
-            for (var i = 0; i < lbDirs.Items.Count; i++)
-                list.Add(lbDirs.Items[i].ToString());
-
-            _handler.Save(list.ToArray());
-
-            MessageBox.Show("saved settings successfuly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            CloseForm();
-        }
-
-        void CloseForm()
-        {
-            Close();
-        }
-
         void btnAdd_Click(object sender, EventArgs e)
         {
             new AddDirectoryForm(_handler).ShowDialog();
@@ -57,12 +33,25 @@ namespace WindowsFormsApp.Forms
 
         void btnRemove_Click(object sender, EventArgs e)
         {
+            if (lbDirs.SelectedItem == null || string.IsNullOrWhiteSpace(lbDirs.SelectedItem.ToString()))
+            {
+                MessageBox.Show("Please select something to remove", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            var i = lbDirs.SelectedIndex;
-
-            _handler.Remove(i);
+            _handler.Remove(lbDirs.SelectedItem.ToString());
 
             Initialize();
+        }
+
+        void btnBack_Click(object sender, EventArgs e)
+        {
+            CloseForm();
+        }
+
+        void CloseForm()
+        {
+            Close();
         }
     }
 }

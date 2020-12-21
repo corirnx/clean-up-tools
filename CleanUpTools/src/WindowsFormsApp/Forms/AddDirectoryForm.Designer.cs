@@ -57,7 +57,7 @@ namespace WindowsFormsApp.Forms
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(129, 29);
             this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "save";
+            this.btnSave.Text = "add";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 

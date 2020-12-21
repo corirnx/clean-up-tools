@@ -29,24 +29,12 @@ namespace WindowsFormsApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSave = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lbDirs = new System.Windows.Forms.ListBox();
             this.btnRemove = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.Location = new System.Drawing.Point(646, 146);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(129, 61);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button2
             // 
@@ -110,7 +98,6 @@ namespace WindowsFormsApp.Forms
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnSave);
             this.Name = "SettingsForm";
             this.Text = "SETTINGS";
             this.ResumeLayout(false);
@@ -118,7 +105,6 @@ namespace WindowsFormsApp.Forms
         }
 
         #endregion
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnAdd;

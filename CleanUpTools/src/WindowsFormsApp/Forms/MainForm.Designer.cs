@@ -42,7 +42,7 @@ namespace WindowsFormsApp.Forms
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(129, 61);
             this.btnSettings.TabIndex = 0;
-            this.btnSettings.Text = "edit settings";
+            this.btnSettings.Text = "settings";
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
