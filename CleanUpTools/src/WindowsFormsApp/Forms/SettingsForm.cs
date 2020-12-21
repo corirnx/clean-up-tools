@@ -9,7 +9,7 @@ namespace WindowsFormsApp.Forms
     {
         readonly SettingsHandler _handler;
 
-        public SettingsForm(SettingsHandler handler)
+        internal SettingsForm(SettingsHandler handler)
         {
             InitializeComponent();
 
@@ -25,22 +25,30 @@ namespace WindowsFormsApp.Forms
                 rtbContent.Text += $"{d.Directory.FullName};{d.Extension};{d.Recursive.ToString()};{Environment.NewLine}";
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        void btnBack_Click(object sender, EventArgs e)
         {
-            Close();
+            CloseForm();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        void btnSave_Click(object sender, EventArgs e)
         {
-            var lines = rtbContent.Text.Split(Environment.NewLine);
-            if (!lines.Any())
-                return; // todo info
+            if (!SettingsValidator.ValidateText(rtbContent.Text))
+            {
+                MessageBox.Show("settings are not valid - please check format: directory.fullname;extension;recursive;", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
 
             _handler.SaveSettings(rtbContent.Text);
 
-            // todo info
+            MessageBox.Show("saved settings successfuly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            return;
+            CloseForm();
+        }
+
+        void CloseForm()
+        {
+            Close();
         }
     }
 }
