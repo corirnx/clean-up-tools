@@ -9,7 +9,7 @@ namespace WindowsFormsApp.Forms
     {
         readonly SettingsHandler _handler;
 
-        public MainForm(SettingsHandler handler)
+        internal MainForm(SettingsHandler handler)
         {
             InitializeComponent();
 
@@ -18,17 +18,17 @@ namespace WindowsFormsApp.Forms
             rtbConsole.Text += $"welcome! initialized app{Environment.NewLine}";
         }
 
-        private void btnSettings_Click(object sender, EventArgs e)
+        void btnSettings_Click(object sender, EventArgs e)
         {
             new SettingsForm(_handler).ShowDialog();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        void btnExit_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void btnCleanUp_Click(object sender, EventArgs e)
+        void btnCleanUp_Click(object sender, EventArgs e)
         {
             var directories = _handler.GetDirectories();
             rtbConsole.Text += $"{Environment.NewLine}start clean up {directories.Length} dirctories{Environment.NewLine}";
