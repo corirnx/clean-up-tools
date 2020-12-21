@@ -6,7 +6,7 @@ namespace WindowsFormsApp.Infrastructure
 {
     internal class SettingsHandler
     {
-        FileInfo settingsFile;
+        FileInfo _settingsFile;
 
         internal SettingsHandler()
         {
@@ -15,12 +15,12 @@ namespace WindowsFormsApp.Infrastructure
             if (!FileExits(filePath))
                 throw new FileNotFoundException(filePath);
 
-            settingsFile = new FileInfo(filePath);
+            _settingsFile = new FileInfo(filePath);
         }
 
         internal CleanUpDirectory[] GetDirectories()
         {
-            var lines = File.ReadAllLines(settingsFile.FullName);
+            var lines = File.ReadAllLines(_settingsFile.FullName);
             var list = new List<CleanUpDirectory>();
             for (int i = 0; i < lines.Length; i++)
             {
@@ -54,12 +54,21 @@ namespace WindowsFormsApp.Infrastructure
             // validate
             try
             {
-                File.WriteAllText(settingsFile.FullName, content);
+                File.WriteAllText(_settingsFile.FullName, content);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        internal void Add(string directory, string extension, bool isRecursive)
+        {
+            var content = File.ReadAllText(_settingsFile.FullName);
+
+            content += $"{directory};{extension};{isRecursive};{Environment.NewLine}";
+
+            SaveSettings(content);
         }
 
         bool FileExits(string filePath)

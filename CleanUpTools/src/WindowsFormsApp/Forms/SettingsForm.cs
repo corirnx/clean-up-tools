@@ -50,5 +50,12 @@ namespace WindowsFormsApp.Forms
         {
             Close();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            new AddDirectoryForm(_handler).ShowDialog();
+
+            // todo :  reload display
+        }
     }
 }

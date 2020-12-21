@@ -33,6 +33,7 @@ namespace WindowsFormsApp.Forms
             this.button2 = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.rtbContent = new System.Windows.Forms.RichTextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSave
@@ -75,11 +76,23 @@ namespace WindowsFormsApp.Forms
             this.rtbContent.TabIndex = 5;
             this.rtbContent.Text = "";
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Location = new System.Drawing.Point(646, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(129, 61);
+            this.btnAdd.TabIndex = 6;
+            this.btnAdd.Text = "add directory";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 361);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.rtbContent);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.button2);
@@ -95,5 +108,6 @@ namespace WindowsFormsApp.Forms
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.RichTextBox rtbContent;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
