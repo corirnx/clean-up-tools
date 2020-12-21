@@ -29,36 +29,36 @@ namespace WindowsFormsApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctnSettings = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.rtbConsole = new System.Windows.Forms.RichTextBox();
             this.btnCleanUp = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // ctnSettings
+            // btnSettings
             // 
-            this.ctnSettings.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ctnSettings.Location = new System.Drawing.Point(643, 12);
-            this.ctnSettings.Name = "ctnSettings";
-            this.ctnSettings.Size = new System.Drawing.Size(129, 61);
-            this.ctnSettings.TabIndex = 0;
-            this.ctnSettings.Text = "edit settings";
-            this.ctnSettings.UseVisualStyleBackColor = true;
-            this.ctnSettings.Click += new System.EventHandler(this.ctnSettings_Click);
+            this.btnSettings.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSettings.Location = new System.Drawing.Point(643, 12);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(129, 61);
+            this.btnSettings.TabIndex = 0;
+            this.btnSettings.Text = "edit settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // rtbConsole
             // 
             this.rtbConsole.Location = new System.Drawing.Point(12, 12);
             this.rtbConsole.Name = "rtbConsole";
             this.rtbConsole.ReadOnly = true;
-            this.rtbConsole.Size = new System.Drawing.Size(625, 327);
+            this.rtbConsole.Size = new System.Drawing.Size(625, 337);
             this.rtbConsole.TabIndex = 1;
             this.rtbConsole.Text = "";
             // 
             // btnCleanUp
             // 
             this.btnCleanUp.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCleanUp.Location = new System.Drawing.Point(643, 93);
+            this.btnCleanUp.Location = new System.Drawing.Point(643, 79);
             this.btnCleanUp.Name = "btnCleanUp";
             this.btnCleanUp.Size = new System.Drawing.Size(129, 61);
             this.btnCleanUp.TabIndex = 2;
@@ -69,7 +69,7 @@ namespace WindowsFormsApp.Forms
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnExit.Location = new System.Drawing.Point(643, 278);
+            this.btnExit.Location = new System.Drawing.Point(643, 288);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(129, 61);
             this.btnExit.TabIndex = 3;
@@ -85,7 +85,7 @@ namespace WindowsFormsApp.Forms
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCleanUp);
             this.Controls.Add(this.rtbConsole);
-            this.Controls.Add(this.ctnSettings);
+            this.Controls.Add(this.btnSettings);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.ResumeLayout(false);
@@ -94,7 +94,7 @@ namespace WindowsFormsApp.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button ctnSettings;
+        private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.RichTextBox rtbConsole;
         private System.Windows.Forms.Button btnCleanUp;
         private System.Windows.Forms.Button btnExit;

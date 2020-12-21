@@ -18,9 +18,9 @@ namespace WindowsFormsApp.Forms
             rtbConsole.Text += $"welcome! initialized app{Environment.NewLine}";
         }
 
-        private void ctnSettings_Click(object sender, EventArgs e)
+        private void btnSettings_Click(object sender, EventArgs e)
         {
-
+            new SettingsForm(_handler).ShowDialog();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

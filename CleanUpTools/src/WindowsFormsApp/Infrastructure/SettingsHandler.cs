@@ -8,7 +8,7 @@ namespace WindowsFormsApp.Infrastructure
     {
         FileInfo settingsFile;
 
-        public SettingsHandler()
+        internal SettingsHandler()
         {
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "clean-up-tools.config");
 
@@ -47,6 +47,19 @@ namespace WindowsFormsApp.Infrastructure
             }
 
             return list.ToArray();
+        }
+
+        internal void SaveSettings(string content)
+        {
+            // validate
+            try
+            {
+                File.WriteAllText(settingsFile.FullName, content);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         bool FileExits(string filePath)
