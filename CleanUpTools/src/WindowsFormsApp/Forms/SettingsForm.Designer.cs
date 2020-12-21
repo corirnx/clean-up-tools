@@ -98,6 +98,7 @@ namespace WindowsFormsApp.Forms
             this.btnRemove.TabIndex = 8;
             this.btnRemove.Text = "remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // SettingsForm
             // 

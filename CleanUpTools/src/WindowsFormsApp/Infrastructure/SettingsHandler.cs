@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -45,6 +46,19 @@ namespace WindowsFormsApp.Infrastructure
             var content = File.ReadAllText(_settingsFile.FullName);
 
             return content.Split(_seperator).Where(t => !string.IsNullOrWhiteSpace(t)).ToArray();
+        }
+
+        internal void Remove(int index)
+        {
+            var lines = Get();
+
+            var newList = new List<string>();
+
+            for (int i = 0; i < lines.Length; i++)
+                if (i != index)
+                    newList.Add(lines[i]);
+
+            Save(newList.ToArray());
         }
 
         bool FileExits(string filePath)

@@ -48,9 +48,19 @@ namespace WindowsFormsApp.Forms
             Close();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        void btnAdd_Click(object sender, EventArgs e)
         {
             new AddDirectoryForm(_handler).ShowDialog();
+
+            Initialize();
+        }
+
+        void btnRemove_Click(object sender, EventArgs e)
+        {
+
+            var i = lbDirs.SelectedIndex;
+
+            _handler.Remove(i);
 
             Initialize();
         }

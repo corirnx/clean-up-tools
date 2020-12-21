@@ -36,14 +36,14 @@ namespace WindowsFormsApp.Forms
 
             for (int i = 0; i < directories.Length; i++)
             {
-                var dir = directories[i].Split(',');
+                var dir = directories[i].Split(';');
                 rtbConsole.Text += $"clean up {dir[0]}{Environment.NewLine}";
                 // todo logs / duration
                 // todo recursive
                 //File.Delete(directories[i].Directory.FullName);
             }
 
-            rtbConsole.Text += $"{Environment.NewLine}clean up done";
+            rtbConsole.Text += $"{Environment.NewLine}clean up done{Environment.NewLine}";
         }
     }
 }
