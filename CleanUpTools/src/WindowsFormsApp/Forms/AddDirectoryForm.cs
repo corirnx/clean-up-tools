@@ -8,6 +8,7 @@ namespace WindowsFormsApp.Forms
     internal partial class AddDirectoryForm : Form
     {
         readonly SettingsHandler _handler;
+        FileInfo _fileInfo;
 
         internal AddDirectoryForm(SettingsHandler handler)
         {
@@ -22,9 +23,9 @@ namespace WindowsFormsApp.Forms
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                var fileInfo = new FileInfo(ofd.FileName);
-                tbDirectory.Text = fileInfo.Directory.FullName;
-                tbExtension.Text = fileInfo.Extension;
+                _fileInfo = new FileInfo(ofd.FileName);
+                tbDirectory.Text = _fileInfo.Directory.FullName;
+                tbExtension.Text = _fileInfo.Extension;
             }
         }
 

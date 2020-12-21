@@ -7,12 +7,14 @@ namespace WindowsFormsApp.Forms
     internal partial class MainForm : Form
     {
         readonly SettingsHandler _handler;
+        readonly CleanUpHandler _cleanUp;
 
         internal MainForm(SettingsHandler handler)
         {
             InitializeComponent();
 
             _handler = handler;
+            _cleanUp = new CleanUpHandler();
 
             rtbConsole.Text += $"welcome! initialized app{Environment.NewLine}";
         }
@@ -30,20 +32,27 @@ namespace WindowsFormsApp.Forms
         void btnCleanUp_Click(object sender, EventArgs e)
         {
             var directories = _handler.Get();
-            // todo
 
-            rtbConsole.Text += $"{Environment.NewLine}start clean up {directories.Length} dirctories{Environment.NewLine}";
+            rtbConsole.Text += $"{Environment.NewLine}start clean up {directories.Length} dirctories{Environment.NewLine}{Environment.NewLine}";
 
-            for (int i = 0; i < directories.Length; i++)
+            try
             {
-                var dir = directories[i].Split(';');
-                rtbConsole.Text += $"clean up {dir[0]}{Environment.NewLine}";
-                // todo logs / duration
-                // todo recursive
-                //File.Delete(directories[i].Directory.FullName);
-            }
+                for (int i = 0; i < directories.Length; i++)
+                {
+                    var resultLines = _cleanUp.TryDeleteFiles(directories[i]);
 
-            rtbConsole.Text += $"{Environment.NewLine}clean up done{Environment.NewLine}";
+                    for (int j = 0; j < resultLines.Length; j++)
+                        rtbConsole.Text += $"{resultLines[j]}{Environment.NewLine}";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                rtbConsole.Text += $"{Environment.NewLine}clean up done{Environment.NewLine}";
+            }
         }
     }
 }
