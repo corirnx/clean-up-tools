@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 using WindowsFormsApp.Infrastructure;
 
@@ -30,13 +29,17 @@ namespace WindowsFormsApp.Forms
 
         void btnCleanUp_Click(object sender, EventArgs e)
         {
-            var directories = _handler.GetDirectories();
+            var directories = _handler.Get();
+            // todo
+
             rtbConsole.Text += $"{Environment.NewLine}start clean up {directories.Length} dirctories{Environment.NewLine}";
 
             for (int i = 0; i < directories.Length; i++)
             {
-                rtbConsole.Text += $"clean up {directories[i].Directory.FullName}{Environment.NewLine}";
-                // todo validate / handle / logs / duration
+                var dir = directories[i].Split(',');
+                rtbConsole.Text += $"clean up {dir[0]}{Environment.NewLine}";
+                // todo logs / duration
+                // todo recursive
                 //File.Delete(directories[i].Directory.FullName);
             }
 

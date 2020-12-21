@@ -32,18 +32,19 @@ namespace WindowsFormsApp.Forms
             this.btnSave = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.rtbContent = new System.Windows.Forms.RichTextBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.lbDirs = new System.Windows.Forms.ListBox();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.Location = new System.Drawing.Point(646, 79);
+            this.btnSave.Location = new System.Drawing.Point(646, 146);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(129, 61);
             this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "save settings";
+            this.btnSave.Text = "save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -68,14 +69,6 @@ namespace WindowsFormsApp.Forms
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // rtbContent
-            // 
-            this.rtbContent.Location = new System.Drawing.Point(12, 12);
-            this.rtbContent.Name = "rtbContent";
-            this.rtbContent.Size = new System.Drawing.Size(628, 337);
-            this.rtbContent.TabIndex = 5;
-            this.rtbContent.Text = "";
-            // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -83,17 +76,37 @@ namespace WindowsFormsApp.Forms
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(129, 61);
             this.btnAdd.TabIndex = 6;
-            this.btnAdd.Text = "add directory";
+            this.btnAdd.Text = "add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lbDirs
+            // 
+            this.lbDirs.FormattingEnabled = true;
+            this.lbDirs.ItemHeight = 15;
+            this.lbDirs.Location = new System.Drawing.Point(12, 13);
+            this.lbDirs.Name = "lbDirs";
+            this.lbDirs.Size = new System.Drawing.Size(628, 334);
+            this.lbDirs.TabIndex = 7;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRemove.Location = new System.Drawing.Point(646, 79);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(129, 61);
+            this.btnRemove.TabIndex = 8;
+            this.btnRemove.Text = "remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 361);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.lbDirs);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.rtbContent);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnSave);
@@ -107,7 +120,8 @@ namespace WindowsFormsApp.Forms
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.RichTextBox rtbContent;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ListBox lbDirs;
+        private System.Windows.Forms.Button btnRemove;
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using WindowsFormsApp.Infrastructure;
 
@@ -19,10 +19,10 @@ namespace WindowsFormsApp.Forms
 
         void Initialize()
         {
-            var dir = _handler.GetDirectories();
-            // todo
-            foreach (var d in dir)
-                rtbContent.Text += $"{d.Directory.FullName};{d.Extension};{d.Recursive.ToString()};{Environment.NewLine}";
+            lbDirs.Items.Clear();
+
+            foreach (var dir in _handler.Get())
+                lbDirs.Items.Add($"{dir}");
         }
 
         void btnBack_Click(object sender, EventArgs e)
@@ -32,14 +32,11 @@ namespace WindowsFormsApp.Forms
 
         void btnSave_Click(object sender, EventArgs e)
         {
-            if (!SettingsValidator.ValidateText(rtbContent.Text))
-            {
-                MessageBox.Show("settings are not valid - please check format: directory.fullname;extension;recursive;", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            var list = new List<string>();
+            for (var i = 0; i < lbDirs.Items.Count; i++)
+                list.Add(lbDirs.Items[i].ToString());
 
-                return;
-            }
-
-            _handler.SaveSettings(rtbContent.Text);
+            _handler.Save(list.ToArray());
 
             MessageBox.Show("saved settings successfuly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -55,7 +52,7 @@ namespace WindowsFormsApp.Forms
         {
             new AddDirectoryForm(_handler).ShowDialog();
 
-            // todo :  reload display
+            Initialize();
         }
     }
 }
