@@ -10,12 +10,11 @@ namespace WindowsFormsApp.Infrastructure
     {
         DirectoryInfo currDirInfo;
         List<string> _infoResultList;
-        Stopwatch stopWatch;
+        readonly Stopwatch stopWatch;
 
         internal CleanUpHandler()
         {
             stopWatch = new Stopwatch();
-
         }
 
         internal string[] TryDeleteFiles(string configLine)
@@ -26,8 +25,8 @@ namespace WindowsFormsApp.Infrastructure
             // dir;extension;recursive;
             var parts = configLine.Split(';');
 
-            if (!TryExits(parts[0]))
-                return null;
+            if (!TryDirExists(parts[0]))
+                return _infoResultList.ToArray();
 
             currDirInfo = new DirectoryInfo(parts[0]);
 
@@ -41,12 +40,12 @@ namespace WindowsFormsApp.Infrastructure
         {
             stopWatch.Restart();
 
-            if (!TryExits(currDir.FullName))
+            if (!TryDirExists(currDir.FullName))
                 return;
 
             var cnt = TryDeleteFiles(currDir, extension);
 
-            _infoResultList.Add($"{currDir.FullName}: {cnt} files deleted ({stopWatch.ElapsedMilliseconds}msc)");
+            _infoResultList.Add($"{currDir.FullName}: {cnt} files deleted ({stopWatch.ElapsedMilliseconds}ms)");
 
             if (isRecursive)
                 foreach (var dir in currDir.EnumerateDirectories())
@@ -61,11 +60,11 @@ namespace WindowsFormsApp.Infrastructure
             {
                 try
                 {
-                    if (File.Exists(fileInfo.FullName))
-                    {
-                        //File.Delete(fileInfo.FullName);
-                        cnt++;
-                    }
+                    if (!File.Exists(fileInfo.FullName))
+                        continue;
+
+                    File.Delete(fileInfo.FullName);
+                    cnt++;
                 }
                 catch (Exception ex)
                 {
@@ -76,7 +75,7 @@ namespace WindowsFormsApp.Infrastructure
             return cnt;
         }
 
-        bool TryExits(string dirPath)
+        bool TryDirExists(string dirPath)
         {
             try
             {
