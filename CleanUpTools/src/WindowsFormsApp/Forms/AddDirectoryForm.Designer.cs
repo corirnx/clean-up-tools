@@ -133,7 +133,11 @@ namespace WindowsFormsApp.Forms
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnBack);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddDirectoryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ADD DIRECTORY";
             this.ResumeLayout(false);
             this.PerformLayout();
