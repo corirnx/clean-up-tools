@@ -87,7 +87,7 @@ namespace WindowsFormsApp.Forms
             this.Controls.Add(this.rtbConsole);
             this.Controls.Add(this.btnSettings);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "CLEAN UP";
             this.ResumeLayout(false);
 
         }

@@ -85,7 +85,7 @@ namespace WindowsFormsApp.Forms
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnSave);
             this.Name = "SettingsForm";
-            this.Text = "SettingsForm";
+            this.Text = "SETTINGS";
             this.ResumeLayout(false);
 
         }
