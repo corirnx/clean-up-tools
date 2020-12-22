@@ -54,18 +54,11 @@ namespace WindowsFormsApp.Infrastructure
 
             foreach (FileInfo fileInfo in dirInfo.EnumerateFiles($"*{extension}").ToArray())
             {
-                try
-                {
-                    if (!File.Exists(fileInfo.FullName))
-                        continue;
+                if (!FileHandler.EnsureFileExits(fileInfo.FullName))
+                    continue;
 
-                    File.Delete(fileInfo.FullName);
+                if (FileHandler.TryDeleteFile(fileInfo.FullName))
                     cnt++;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
             }
 
             return cnt;

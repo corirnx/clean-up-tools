@@ -12,12 +12,9 @@ namespace WindowsFormsApp.Infrastructure
         internal SettingsHandler()
         {
             _seperator = "_;_";
+
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "clean-up-tools.config");
-
-            if (!FileExits(filePath))
-                throw new FileNotFoundException(filePath);
-
-            _settingsFile = new FileInfo(filePath);
+            _settingsFile = FileHandler.GetFileInfo(filePath);
         }
 
         internal void Save(string[] lines)
@@ -42,6 +39,9 @@ namespace WindowsFormsApp.Infrastructure
 
         internal string[] Get()
         {
+            if (!FileHandler.EnsureFileExits(_settingsFile.FullName))
+                return new string[0];
+
             var content = File.ReadAllText(_settingsFile.FullName);
 
             return content.Split(_seperator).Where(t => !string.IsNullOrWhiteSpace(t)).ToArray();
@@ -50,18 +50,6 @@ namespace WindowsFormsApp.Infrastructure
         internal void Remove(string text)
         {
             Save(Get().Where(d => !d.Equals(text, StringComparison.InvariantCultureIgnoreCase)).ToArray());
-        }
-
-        bool FileExits(string filePath)
-        {
-            try
-            {
-                return File.Exists(filePath);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
         }
     }
 }
